@@ -1,0 +1,28 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: install apache2 on ubuntu
+    apt:
+     name: apache2
+     state: present
+    when: ansible_os_family =="Debian"
+  - name: start webservice on ubuntu
+    service:
+     name: apache2
+     state: restarted
+     enable: yes
+    when: ansible_os_family=="Debain"
+
+  - name: install apache2 on RedHat
+    yum:
+     name: httpd
+     state: present
+    when: ansible_os_family=="RedHat"
+  - name: start webservice on RedHat
+    service:
+     name: httpd
+     state: restarted
+     enable: yes
+    when: ansible_os_family=="RedHat"
+    

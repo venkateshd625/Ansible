@@ -1,0 +1,15 @@
+---
+ - hosts: appservers
+   become: yes
+   tasks: 
+   - name: install git on redhat
+     yum:
+      name: git
+      statee: present
+      ignore_errors: yes
+
+   - name: install wget on redhat
+     yum:
+      name: wget
+      state: present
+      

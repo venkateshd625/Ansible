@@ -8,3 +8,16 @@
    - name: see the result
      debug: 
      msg: "{{result}}"
+
+   - name: install apache2 on redhat
+     yum:
+      name: httpd
+      state: present
+     when: result.stderr == ""
+
+   - name: install git on redhat
+     yum:
+      name: git
+      state: present
+     when: result.stderr == ""
+

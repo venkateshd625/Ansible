@@ -13,12 +13,12 @@
      yum:
       name: httpd
       state: present
-     when: result.stderr == ""
+     when: result.stderr != " "
      tags: myapache2
 
    - name: install git on redhat
      yum:
       name: git
       state: present
-     when: result.stderr == ""
+     when: result.stderr == " "
      tags: mygit

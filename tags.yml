@@ -9,16 +9,18 @@
      debug: 
      msg: "{{result}}"
 
+   - name: install git on redhat
+     yum:
+      name: tree
+      state: present
+     when: result.stderr == " "
+     tags: mygit
+
    - name: install apache2 on redhat
      yum:
       name: httpd
       state: present
-     when: result.stderr == " "
+     when: result.stderr != " "
      tags: myapache2
 
-   - name: install git on redhat
-     yum:
-      name: git
-      state: present
-     when: result.stderr == " "
-     tags: mygit
+   

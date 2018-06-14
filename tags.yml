@@ -5,13 +5,15 @@
    - name: get the host name
      command: hostname -f
      register: result
+     tags: result
    - name: see the result
      debug: 
      msg: "{{result}}"
+     tags: seeresult
 
    - name: install git on redhat
      yum:
-      name: tree
+      name: git
       state: present
      when: result.stderr == " "
      tags: mygit
@@ -20,7 +22,7 @@
      yum:
       name: httpd
       state: present
-     when: result.stderr != " "
+     when: result.stderr == " "
      tags: myapache2
 
    

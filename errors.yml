@@ -6,7 +6,7 @@
      yum:
       name: git
       statee: present
-      ignore_errors: yes
+     ignore_errors: yes
 
    - name: install wget on redhat
      yum:

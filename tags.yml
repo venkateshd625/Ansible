@@ -1,0 +1,24 @@
+---
+ - hosts: appservers
+   become: yes
+   tasks:
+   - name: get the host name
+     command: hostname -f
+     register: result
+   - name: see the result
+     debug: 
+     msg: "{{result}}"
+
+   - name: install apache2 on redhat
+     yum:
+      name: httpd
+      state: present
+     when: result.stderr == ""
+     tags: myapache2
+
+   - name: install git on redhat
+     yum:
+      name: git
+      state: present
+     when: result.stderr == ""
+     tags: mygit

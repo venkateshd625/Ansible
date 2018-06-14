@@ -1,0 +1,10 @@
+---
+ - hosts: appservers
+   become: yes
+   tasks:
+   - name: get the host name
+     command: hostname -f
+     register: result
+   - name: see the result
+     debug: 
+     msg: {{"result"}} 

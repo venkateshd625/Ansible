@@ -13,7 +13,6 @@
      yum:
       name: httpd
       state: present
-      
      when: result.stderr == " "
      tags: myapache2
 

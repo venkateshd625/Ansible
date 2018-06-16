@@ -3,7 +3,7 @@
    yum:
     name: tomcat
     state: present
-    notify: starttomcat
+   notify: starttomcat
 
  - name: install webapps
    yum:

@@ -1,0 +1,21 @@
+---
+ - hosts: appservers
+   become: yes
+   tasks:
+    - include_tasks: file.yml
+    - name: install webserver on "RedHat"
+      yum:
+        name: httpd
+        state: present
+      notify: myhttpdservice
+      when: ansible_os_family == "RedHat"
+    - name: copy index file from master to node
+      template:
+        src: index.j2
+        dest: /var/www/html/index.html
+      when: ansible_os_family == "RedHat"    
+   handler:
+    - name: myhttpdservice
+      service:
+        name: httpd
+      when: ansible_os_family == "RedHat"

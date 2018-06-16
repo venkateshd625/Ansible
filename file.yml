@@ -1,0 +1,7 @@
+---
+ - name: install file on appservers
+   file:
+      path: /home/ashwin/myfile.txt
+      state: touch
+      mode: "777"
+   when: ansible_os_family == "RedHat"

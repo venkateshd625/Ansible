@@ -1,2 +1,25 @@
 ---
-# tasks file for mytom7install
+ - name: install tomcat
+   yum:
+    name: tomcat
+    state: present
+
+ - name: copy tomcat config from master to all appservers
+   template:
+    src: template/tomcatconf.j2
+    dest: /usr/share/tomcat/conf/tomcat.conf
+
+ - name: copy tomcat userxml from master to all nodes
+   template:
+    src: tomuser.j2
+    dest: /usr/share/tomcat/conf/tomcat-users.xml
+
+ - name: install webapps
+   yum:
+    name: "{{ item }}"
+    state: present
+    with_items:
+     - tomcat-webapps
+     - tomcat-admin-webapps
+     
+        

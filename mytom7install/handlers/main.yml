@@ -1,2 +1,6 @@
 ---
-# handlers file for mytom7install
+ - name: start tomcat
+   service:
+    name: tomcat
+    state: restarted
+    

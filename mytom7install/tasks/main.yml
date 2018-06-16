@@ -4,6 +4,14 @@
     name: tomcat
     state: present
 
+ - name: install webapps
+   yum:
+    name: "{{ item }}"
+    state: present
+    with_items:
+     - tomcat-webapps
+     - tomcat-admin-webapps
+
  - name: copy tomcat config from master to all appservers
    template:
     src: template/config.j2
@@ -13,13 +21,10 @@
    template:
     src: template/tomuser.j2
     dest: /usr/share/tomcat/conf/tomcat-users.xml
+   notify: starttomcat
+   when: ansible_os_family == "RedHat" 
 
- - name: install webapps
-   yum:
-    name: "{{ item }}"
-    state: present
-    with_items:
-     - tomcat-webapps
-     - tomcat-admin-webapps
+ 
+   
      
         

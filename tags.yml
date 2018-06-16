@@ -8,7 +8,7 @@
      tags: result
    - name: see the result
      debug: 
-     msg: "{{result}}"
+      msg: "{{result}}"
      tags: seeresult
 
    - name: install git on redhat

@@ -11,7 +11,7 @@
     service:
      name: apache2
      state: restarted
-     enable: yes
+     enabled: yes
     when: ansible_os_family == "Debain"
 
   - name: install apache2 on RedHat
@@ -23,6 +23,6 @@
     service:
      name: httpd
      state: restarted
-     enable: yes
+     enabled: yes
     when: ansible_os_family == "RedHat"
     

@@ -6,12 +6,12 @@
 
  - name: copy tomcat config from master to all appservers
    template:
-    src: template/tomcatconf.j2
+    src: /template/tomcatconf.j2
     dest: /usr/share/tomcat/conf/tomcat.conf
 
  - name: copy tomcat userxml from master to all nodes
    template:
-    src: tomuser.j2
+    src: /tomuser.j2
     dest: /usr/share/tomcat/conf/tomcat-users.xml
 
  - name: install webapps

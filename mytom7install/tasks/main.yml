@@ -3,6 +3,7 @@
    yum:
     name: tomcat
     state: present
+    notify: starttomcat
 
  - name: install webapps
    yum:
@@ -21,7 +22,7 @@
    template:
     src: template/tomuser.j2
     dest: /usr/share/tomcat/conf/tomcat-users.xml
-   notify: starttomcat
+   notify: restarttomcat
    when: ansible_os_family == "RedHat" 
 
  

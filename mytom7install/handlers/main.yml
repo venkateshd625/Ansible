@@ -2,5 +2,9 @@
  - name: starttomcat
    service:
     name: tomcat
-    state: restarted
-    
+    state: started
+    enabled: yes
+ - name: restarttomcat
+   service:
+    name: tomcat
+    state: restarted 
